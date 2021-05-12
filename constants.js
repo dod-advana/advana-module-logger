@@ -1,0 +1,35 @@
+module.exports = {
+	levels: {
+		error: 0,
+		warn: 1,
+		info: 2,
+		metrics: 3,
+		boot: 3,
+		chunkAssembly: 4,
+		chunkPOST: 5,
+		unzipping: 6,
+		completed: 7,
+		chunkGET: 8,
+		database: 9,
+		http: 9,
+		streamOPEN: 10,
+		streamCLOSE: 10,
+		debug: 11,
+	},
+	colors: {
+		error: 'red',
+		warn: 'yellow',
+		info: 'cyan',
+		metrics: 'blue',
+		chunkGET: 'yellow',
+		chunkPOST: 'blue',
+		chunkAssembly: 'blue',
+		unzipping: 'cyan',
+		completed: 'green',
+		database: 'magenta',
+		boot: 'magenta',
+		streamOPEN: 'red',
+		streamCLOSE: 'red',
+		debug: 'red'
+	}
+};
