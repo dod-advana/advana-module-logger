@@ -1,6 +1,6 @@
 {
   "name": "@dod-advana/advana-logger",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "logger and api error for consistency ",
   "main": "index.js",
   "scripts": {
