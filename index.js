@@ -5,7 +5,7 @@ const os = require('os');
 
 const logLevels = require('./constants');
 
-const { isSuperAdmin } = require('./util');
+const { isSuperAdmin, getUserID } = require('./util');
 
 // initialize logger as an empty object for dev env and when running tests
 let logger = {};
@@ -43,11 +43,20 @@ try {
 	logger.database = () => { };
 	logger.log = () => { };
 	logger.info = () => { };
+
+	console.log(`${new Date().getTime()} - ?`);
 }
 
-logger.error = (error, code, user) => {
+logger.error = (error, code, reqOrID) => {
 	let message = '';
-	message += (user) ? `${user} ` : '- ';
+	let user = 'Unknown';
+	if (reqOrID && typeof reqOrID === 'object') {
+		user = getUserID(reqOrID);
+	} else if (reqOrID && typeof reqOrID === 'string') {
+		user = reqOrID;
+	}
+
+	message += user + ' ';
 	message += (code) ? `${code} ` : '- ';
 	logger.log('error', message + error);
 };
@@ -151,6 +160,5 @@ process.on('uncaughtException', function (error) {
 	console.log(`Uncaught exception has occurred ${error}`);
 	console.log(error.stack);
 });
-
 
 module.exports = logger;
